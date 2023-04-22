@@ -1,0 +1,8 @@
+#!/bin/busybox sh
+
+# shellcheck disable=SC3060
+for f in "$@"; do
+  decompyle3 "$f" > "${f//.pyc}.decompyle3.py"
+  pycdc "$f" > "${f//.pyc}.pycdc.py"
+  unpyc3 "$f" > "${f//.pyc}.unpyc3.py"
+done
